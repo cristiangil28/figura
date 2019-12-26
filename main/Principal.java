@@ -1,35 +1,64 @@
 package main;
 import punto.*;
 import figura.*;
+import punto.P4;
+
 public class Principal {
-
     public static void main(String[] args) {
-        P2 p2 = new P2();
-        P2 puntoDos = new P2(1,2);
-        P2 puntoTres = new P2(puntoDos);
 
-        P3 puntoCuarto = new P3();
-        P3 puntoQuinto = new P3(1,2,3);
-        P3 puntoSeis = new P3(puntoDos,3);
-        P3 puntoSiete = new P3(puntoQuinto);
+        P2 punto2 = new P2();
+        P3 punto3 = new P3();
+        P4 punto4 = new P4();
+        P2 segundoPunto = new P2(1,2);
+        P2 tercerPunto = new P2(segundoPunto);
+        P3 cuartoPunto = new P3(0,0,0);
+        P3 quintoPunto  =  new P3(1,2,3);
+        P3 sextoPunto = new P3(segundoPunto, 2);
+        P3 septimoPunto = new P3(quintoPunto);
+        P4 octavoPunto = new P4(1,2,3,4);
+        P4 novenoPunto = new P4(octavoPunto);
+        P4 decimoPunto = new P4(septimoPunto,4);
+
 
         Triangulo equilatero = new Triangulo();
-        equilatero.setP1(p2);
-        equilatero.setP2(puntoDos);
-        equilatero.setP3(puntoTres);
+        equilatero.setP1(punto2);
+        equilatero.setP2(segundoPunto);
+        equilatero.setP3(tercerPunto);
 
-        Cubo cubo = new Cubo();
-        cubo.getVertices()[0]= new P3(4,5,6);
-        cubo.getVertices()[1]= puntoSiete;
-        cubo.getVertices()[2]= puntoSeis;
-        cubo.getVertices()[3]= puntoQuinto;
+        Cubo cubito = new Cubo();
+        cubito.getVertices()[0] = new P3(4,5,6);
+        cubito.getVertices()[1] = septimoPunto;
+        cubito.getVertices()[2] = sextoPunto;
+        cubito.getVertices()[3] = quintoPunto;
 
-        P3 [] arrgegloVertices = cubo.getVertices();
+        //P3[] a = cubito.getVertices();
+        /**for (P3 p:a) {
+            System.out.println(p);
+        }*/
+        cubito.setVertices(cubito.getVertices());
 
-        for (P3 vertice: arrgegloVertices) {
-            System.out.println(vertice);
-        }
 
-        P2 pruebaLiskov = new P3();
+        System.out.println(punto2.calcularDistancia(1,1));
+        System.out.println(punto2.calcularDistancia(segundoPunto));
+
+        System.out.println(punto3.calcularDistancia(1,2,3));
+        System.out.println(punto3.calcularDistancia(sextoPunto));
+        System.out.println(punto3.calcularDistancia(tercerPunto, 3));
+
+        System.out.println(punto4.calcularDistancia(1,2,3,4));
+        System.out.println(punto4.calcularDistancia(novenoPunto));
+        System.out.println(punto4.calcularDistancia(quintoPunto,4));
+
+        System.out.println(tercerPunto);
+        System.out.println(cuartoPunto);
+        System.out.println(quintoPunto);
+        System.out.println(sextoPunto);
+        System.out.println(septimoPunto);
+        System.out.println(octavoPunto);
+        System.out.println(novenoPunto);
+        System.out.println(decimoPunto);
+
+        //P2 pruebaLiskov = new P3();
+        //((P3)pruebaLiskov)
     }
 }
